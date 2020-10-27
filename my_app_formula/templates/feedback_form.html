@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<header>
+   <script src="/static/js/mailer.js"></script>
+</header>
+<body>
+<div class="container">
+<div class="row">
+<div class="col-md-4"> </div>
+<div class="col-md-4">
+   <h4>Обратная связь</h4>
+   <form action="/static/mail.php" method="post">
+
+       <!-- Hidden Required Fields -->
+       <input type="hidden" name="Имя сайта" value="Радость конструктора">
+       <input type="hidden" name="admin_email" value="lfk@inbox.ru">
+       <input type="hidden" name="Тема" value="Предложения">
+       <!-- END Hidden Required Fields -->
+
+<div class="form-group">
+   <label for="name">Ваше имя:</label>
+   <input type="text" name="name" class="form-control" id="name" placeholder="Имя">
+</div>
+<div class="form-group">
+   <label for="email1">E-mail:</label>
+   <input type="email" name="email" class="form-control" id="email1" placeholder="Email">
+</div>
+<div class="form-group">
+   <label>Сообщение:</label>
+   <textarea class="form-control" name="message" rows="5"></textarea>
+</div>
+   <button type="submit" class="btn btn-info">Отправить сообщение</button>
+</form>
+</div>
+<div class="col-md-4"> </div> </div>
+</div>
+</body>
+
+{% endblock %}
+

@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+{% block body %}
+<meta charset="UTF-8">
+<h1 align="center">Результаты расчета</h1>
+<!--<a class="btn btn-primary" href='/metall/pdf_report' role="button">Convert to PDF format</a>-->
+<!--<a class="btn btn-primary" href="/metall/example1" role="button">Entry Page</a>-->
+
+<table class="table table-bordered table-sm">
+    <thead class="thead-dark">
+    <tr>
+        <th class="text-center" scope="col">\(M\)</th>
+        <th class="text-center" scope="col">\(R_{wf}\)</th>
+        <th class="text-center" scope="col">\(R_{un}\)</th>
+        <th class="text-center" scope="col">\(B_f\)</th>
+        <th class="text-center" scope="col">\(B_z\)</th>
+        <th class="text-center" scope="col">\(\gamma_c\)</th>
+        <th class="text-center" scope="col">\(k_f\)</th>
+        <th class="text-center" scope="col">\(l_1\)</th>
+        <th class="text-center" scope="col">\(l_2\)</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr>
+        <td class="text-center" class="w-25">{{ the_big_m }}</td>
+        <td class="text-center" class="w-25">{{ the_big_r_wf }}</td>
+        <td class="text-center" class="w-25">{{ the_big_r_un }}</td>
+        <td class="text-center" class="w-25">{{ the_big_b_f }}</td>
+        <td class="text-center" class="w-25">{{ the_big_b_z }}</td>
+        <td class="text-center" class="w-25">{{ the_gamma_c }}</td>
+        <td class="text-center" class="w-25">{{ the_k_f }}</td>
+        <td class="text-center" class="w-25">{{ the_l_1 }}</td>
+        <td class="text-center" class="w-25">{{ the_l_2 }}</td>
+
+    </tr>
+
+    </tbody>
+
+</table>
+<div class="container">
+    <h3 align="center">Исходные данные</h3>
+    <p>Полоса прикрепляется двумя горизонтальными и одним вертикальным швом. Изгибающий момент \(M = {{ the_big_m }}
+        кНм\), материал пластины: сталь марки: {{ the_steel_type }} (\( R_{un} = {{ the_big_r_un }} МПа\)). Сварка
+        выполняется электродами марки: {{the_electrode_type }} (\(R_{wf} = {{ the_big_r_wf }} МПа\)), коэффициент
+        условий работы {{ the_gamma_c }}, катет шва \(k_f = {{ the_k_f }} см\), длина шва \(l_1 = {{ the_l_1 }}\), длина
+        шва \(l_2 = {{ the_l_2 }}\) .</p>
+    <h6>Расчет будет производиться согласно СП 16.13330.2017.</h6>
+    <p>Согласно пункту 14.1.16 СП 16.13330.2017 выбор сечения для расчета осуществляется по формулам:
+        \({B_f R_{wf}/ B_z R_{wz}}\leqslant 1 \) - по металлу шва или \({B_f R_{wf}/ B_z R_{wz}} > 1 \) -
+        по границе сплавления. </p>
+    <p>Расчитаем \(R_{wz}\). Согласно таблице №4 СП 16.13330.2017 \(R_{wz} = 0.45 R_{un}\). Нормативное сопротивление
+        \(R_{un}\) выбранной марки
+        стали равняется {{ the_big_r_un }} МПа, таким образом \(R_{wz} = 0.45 \cdot {{ the_big_r_un }} = {{ the_big_r_wz
+        }} МПа\)</p>
+    <p>Подставим данные в формулу \(B_f R_{wf}/ B_z R_{wz}\) \(=\) \({{ the_big_b_f }} \cdot {{ the_big_r_wf }}
+        / {{
+        the_big_b_z }} \cdot {{ the_big_r_wz }}\) \(=\) \({{ the_condition4 }} \leqslant 1\). Таким образом, расчет
+        должен быть выполнен по <b>металлу шва</b>.</p>
+
+    <p>Согласно пункта 14.1.18 СП 16.13330.2017 Расчет сварного соединения с угловыми швами при действии момента М в
+        плоскости расположения этих швов следует выполнять на срез (условный) по металлу шва по
+        формуле: \(M \sqrt {x^2 + y^2} / (I_{fx} + I_{fy}) R_ { wf } \gamma _ { c } \leqslant 1 \) (180). </p>
+    <h3 align="center">Расчет</h3>
+    <p>Центр тяжести периметра швов определяется по формуле: \(x_ц = (l^2_{1} - 0,5l_{2}k_{f}) / (2l_{1} + l_{2}) = ({{
+        the_l_1 }}^2 - 0,5 \cdot {{ the_l_2 }} \cdot {{ the_k_f }}) / (2 \cdot {{ the_l_1 }} \cdot {{ the_l_2 }}) = {{
+        the_x_c }} см.\)</p>
+    <p>Координаты точки А, наиболее удаленной от центра тяжести расчетного сечения швов: \(x = {{
+        the_point_a_coordinate_x }} см, y = {{ the_point_a_coordinate_y }} см.\)</p>
+    <p>Моменты инерции расчетного сечения соединения по металлу шва относительно его главных осей:</p>
+
+    <p>\(I_ { fx } \approx \beta_ { f } ({ \ { } l^ { 3 } _ { 2 } k_ { f } / 12 + 2l_ { 1 } k_ { f } [(l_ { 2 } +k_
+        {
+        f } ) / 2]^ { 2 } { \ } })\)</p>
+    <p>\(I_ { fy } \approx \beta _f \left[{ 2\left[ { \frac { l_1^3 k_f } { 12 } +l_1 k_f \left( { \frac { l_1 } { 2 }
+        -x_ц }\right)^2 }\right]+l_2 k_f \left( { x_ц +\frac { k_f } { 2 } }\right)^2 }\right]\)</p>
+    <p>Для углового шва \(k_{ f } = {{ the_k_f }}\) мм с учетом того, что расчетная длина шва принимается меньше его
+        полной длины на 10 мм (\(l_{ 1 } = {{ the_l_1_minus_10mm }} см:\))</p>
+    <p>\(I_ { fx } = {{ the_big_b_f }} * ({{ the_l_2 }}^3 * {{ the_k_f }} / 12 + 2 * {{ the_l_1_minus_10mm }} * {{
+        the_k_f }} * [({{ the_l_2 }} + {{ the_k_f }}) / 2]^2) = {{ the_big_i_fx }} см^4\)</p>
+    <p>\(I_{fy} = {{ the_big_b_f }} * (2*({{ the_l_1_minus_10mm }}^3 * {{ the_k_f }} / 12 + {{ the_l_1_minus_10mm }} *
+        {{ the_k_f }} * ({{ the_l_1_minus_10mm }} / 2 - {{ the_x_c }})^2) + {{ the_l_2 }} * {{ the_k_f }} * ({{ the_x_c
+        }} + {{ the_k_f }} / 2)^2 )) =
+        {{ the_big_i_fy }} см^4\)</p>
+    <p>Расстояние от центра тяжести периметра швов до точки А: \(\sqrt { x^2+y^2 } =\sqrt { {{
+        the_point_a_coordinate_x }}^2 + {{
+        the_point_a_coordinate_y }}^2 } = {{ the_length_from_x_c_to_a }}\)</p>
+    <p>Вычислим напряжение в соединении по формуле: \(\tau_{f} = M \sqrt {x^2 + y^2} / (I_{fx} + I_{fy}) = {{ the_big_m
+        }} * 10^3 * \sqrt { {{ the_point_a_coordinate_x }}^2 + {{ the_point_a_coordinate_y
+        }}^2 }/
+        ({{ the_big_i_fx }} + {{ the_big_i_fy }}) = {{ the_tau_f }}\)</p>
+    <p>Произведем расчет сварного соединения по формуле: \(M \sqrt {x^2 + y^2} / (I_{fx} + I_{fy}) R_ { wf } \gamma _ {
+        c } \leqslant 1 = {{ the_big_m }} * 10^3 * \sqrt { {{ the_point_a_coordinate_x }}^2 + {{
+        the_point_a_coordinate_y
+        }}^2 }/
+        ({{ the_big_i_fx }} + {{ the_big_i_fy }}) * {{ the_big_r_wf }} * {{ the_gamma_c }} \le 1= {{ the_main_condition
+        }} \le 1\) - <b>условие {{ the_main_notation }}</b>.</p>
+
+    <h3 align="center">Выводы</h3>
+    <p>На основании исходных данных, <b>оптимальной</b> высотой катета \( k_f \) является значение \({{ the_check_katet
+        }}
+        см\).
+        При подстановке данной высоты катета в формулы расчета, условие \(M \sqrt {x^2 + y^2} / (I_{fx} + I_{fy}) R_ {
+        wf } \gamma _ { c } \leqslant 1 = {{
+        the_check_main_condition }} \leqslant 1\) - <b>{{ the_check_main_notation }}</b></p>
+
+    <p>Согласно пункту 14.1.8 СП 16.13330.2017 для угловых швов, размеры которых установлены в соответствии с расчетом,
+        следует, как правило, применять электродные материалы, удовлетворяющие условиям:</p>
+
+    <p>- при механизированной сварке \( R_{ wf } > R_{ wz } = {{ the_big_r_wf }} > {{ the_big_r_wz }}\) - <b>условие {{
+        the_condition1 }}</b></p>
+
+    <p> - при ручной сварке \(1.1 R_{ wz } \leqslant R_{ wf } \leqslant R_{ wz } B_z / B_f = 1.1 \cdot {{ the_big_r_wz
+        }} \leqslant {{ the_big_r_wf }} \leqslant {{ the_big_r_wz }} \cdot {{ the_big_b_z }} / {{ the_big_b_f }} = {{
+        the_cond2_calc1 }} \leqslant
+        {{ the_big_r_wf }} \leqslant {{ the_cond2_calc2 }}\) - <b>условие {{ the_condition2 }}</b></p>
+
+    <p> - при автоматизированной сварке \(R_{ wz } \leqslant R_{ wf } \leqslant R_{ wz } B_z / B_f = {{ the_big_r_wz
+        }} \leqslant {{ the_big_r_wf }} \leqslant {{ the_big_r_wz }} \cdot {{ the_big_b_z }} / {{ the_big_b_f }} = {{
+        the_big_r_wz
+        }} \leqslant {{ the_big_r_wf }} \leqslant {{ the_cond2_calc2 }}\) - <b>условие {{ the_condition2 }}</b></p>
+</div>
+
+
+{% endblock %}

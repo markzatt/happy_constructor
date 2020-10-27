@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block body %}
+<h2>Результаты расчета</h2>
+<a class="btn btn-primary" href="/" role="button">Home Page</a>
+<a class="btn btn-primary" href="/metall/example1" role="button">Entry Page</a>
+<h3>Вы ввели следующие параметры:</h3>
+
+<table class="table table-bordered table-sm">
+    <thead class="thead-dark">
+    <tr>
+        <th class="text-center" scope="col">\(M\)</th>
+        <th class="text-center" scope="col">\(R_{wf}\)</th>
+        <th class="text-center" scope="col">\(R_{wz}\)</th>
+        <th class="text-center" scope="col">\(B_f\)</th>
+        <th class="text-center" scope="col">\(B_z\)</th>
+        <th class="text-center" scope="col">\(\gamma_{wf}\)</th>
+        <th class="text-center" scope="col">\(\gamma_{wz}\)</th>
+        <th class="text-center" scope="col">\(\gamma_c\)</th>
+        <th class="text-center" scope="col">\(b_f\)</th>
+        <th class="text-center" scope="col">\(b_z\)</th>
+        <th class="text-center" scope="col">\(k_f\)</th>
+        <th class="text-center" scope="col">\(t_w\)</th>
+        <th class="text-center" scope="col">\(h_w\)</th>
+        <th class="text-center" scope="col">\(h\)</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr>
+        <td class="text-center" class="w-25">{{ the_big_m }}</td>
+        <td class="text-center" class="w-25">{{ the_big_r_wf }}</td>
+        <td class="text-center" class="w-25">{{ the_big_r_wz }}</td>
+        <td class="text-center" class="w-25">{{ the_big_b_f }}</td>
+        <td class="text-center" class="w-25">{{ the_big_b_z }}</td>
+        <td class="text-center" class="w-25">{{ the_gamma_wf }}</td>
+        <td class="text-center" class="w-25">{{ the_gamma_wz }}</td>
+        <td class="text-center" class="w-25">{{ the_gamma_c }}</td>
+        <td class="text-center" class="w-25">{{ the_b_f }}</td>
+        <td class="text-center" class="w-25">{{ the_b_z }}</td>
+        <td class="text-center" class="w-25">{{ the_k_f }}</td>
+        <td class="text-center" class="w-25">{{ the_t_w }}</td>
+        <td class="text-center" class="w-25">{{ the_h_w }}</td>
+        <td class="text-center" class="w-25">{{ the_h }}</td>
+    </tr>
+    </tbody>
+</table>
+<div>
+     <p>Согласно пункту 14.1.16 СП 16.13330.2011 выбор сечения для расчета осуществляется по формулам:
+    \({B_f R_{wf}\over B_z R_{wz}}\leqslant 1 \) - по металлу шва  или  \({B_f R_{wf}\over B_z R_{wz}} > 1 \) -
+         по границе сплавления. </p>
+<p>На основании исходных данных, расчет должен быть выполнен по границе сплавления.</p>
+<p>Таким образом согласно пункта 14.1.17 СП 16.13330.2011 расчет сварных соединений с угловыми швами при действии
+    момента \(М\) в плоскости, перпендикулярной плоскости
+    расположения швов, следует выполнять на срез (условный) по границе сплавления по формуле \(M / (W_ { z }  R_ { wz }
+    \gamma _ { c }) \leqslant 1 \).  </p>
+    </div>
+<p>{{ the_title }}</p>
+<p>Момент инерции \(I_z\) = {{ the_result6 }}</p>
+<p>Расстояние от оси элемента до наиболее удаленной точки шва \(y_{max}\) = {{ the_result7 }}</p>
+<p>Момент сопротивления \(W_z\) = {{ the_result8 }}</p>
+<p>Напряжение в шве \(\tau_z\) = {{ the_result9 }}</p>
+<p>Отношение \(\tau _ { z } / R_ { wz }\) = {{ the_result10 }}, значит выражение \(M / W_ { z } \leqslant R_ { wz }
+    \gamma _ { wz } \gamma _ { c }\) выполняется. </p>
+{% endblock %}

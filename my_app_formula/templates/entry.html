@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block body %}
+<h2>{{ the_title }}</h2>
+<form method='POST' action='/formula'>
+    <table class="table table-bordered table-sm" class="w-25">
+        <thead class="thead-dark">
+        <p>Введите параметры для рассчета стыкового соединения{{ the_formula }}:</p>
+        <tr>
+            <th scope="row">a:</th>
+            <td><input name='param1' , value=0 type='number' step='any' width='40'></td>
+        </tr>
+        <tr>
+            <th scope="row">b:</th>
+            <td><input name='param2' type='number' step='any' value=0></td>
+        </tr>
+        <tr>
+            <th scope="row">c:</th>
+            <td><input name='param3' , value=0 type='number' step='any' width='40'></td>
+        </tr>
+        <tr>
+            <th scope="row"d>d:</th>
+            <td><input name='param4' type='number' step='any' value=0></td>
+
+        </tr>
+        </thead>
+    </table>
+    <p>When you're ready, click this button:</p>
+    <button type="SUBMIT" class="btn btn-primary">Рассчитать!</button>
+</form>
+{% endblock %}

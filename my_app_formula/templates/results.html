@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block body %}
+<h2>{{ the_title }}</h2>
+ <a class="btn btn-primary" href="/" role="button">Home Page</a>
+ <a class="btn btn-primary" href="/entry" role="button">Entry Page</a>
+<p>You submitted the following data:</p>
+
+<table class="table table-bordered table-sm">
+    <thead class="thead-dark">
+    <tr>
+        <th class="text-center" scope="col">Param1</th>
+        <th class="text-center" scope="col">Param2</th>
+        <th class="text-center" scope="col">Param3</th>
+        <th class="text-center" scope="col">Param4</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr>
+        <td class="text-center" class="w-25">{{ the_param1 }}</td>
+        <td class="text-center" class="w-25">{{ the_param2 }}</td>
+        <td class="text-center" class="w-25">{{ the_param3 }}</td>
+        <td class="text-center" class="w-25">{{ the_param4 }}</td>
+    </tr>
+    </tbody>
+</table>
+<p>When your parameters have been calculated in formula {{ the_formula }} the following result was returned:</p>
+<h3>Result: {{ the_results }}</h3>
+{% endblock %}

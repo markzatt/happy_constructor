@@ -1,0 +1,316 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="container w-50"><h5>Расчет сварного соединения с угловыми швами на действие момента в плоскости расположения
+    шва. Расчет выполняется по металлу шва.</h5>
+    <img src="/static/image_moment_in_the_plane_of_the_seam.png" class="aligncenter" alt="Responsive image">
+</div>
+<form method='POST' action='/constructive_calculation/metal_constructions/result_moment_in_the_plane_of_the_seam'>
+    <div class="container" style="width: 890px">
+        <h4>Введите параметры для расчёта:</h4>
+
+
+        <table class="table table-bordered table-sm" style="border-color: white">
+
+            <thead class="thead-dark" style="">
+
+            <tr>
+                <th scope="row" width="300">Изгибающий момент \(M\) (кНм) :</th>
+                <td scope="col" width=''><input name='big_m' value=55 type='number' min="1" step='any'
+                                                style="height: 33px; width: 196px; border-color: black"></td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <th scope="row">Выберите марку электродов:</th>
+                <td style="">
+                    <div class="container p-0">
+                        <div class="row">
+                            <div class="col-sm-3 mr-auto">
+                                <select name="select1" id="select1" class="select"
+                                        style="height: 35px; width: 196px; border-color: black">
+                                    <optgroup label="">
+                                        <option value="start">Выберите марку электродов</option>
+                                        <option name="big_r_wf" value="Э42, Э42А">Э42, Э42А</option>
+                                        <option name="big_r_wf" value="Э46, Э46А">Э46, Э46А</option>
+                                        <option name="big_r_wf" value="Э50, Э50А">Э50, Э50А</option>
+                                        <option name="big_r_wf" value="Э60">Э60</option>
+                                        <option name="big_r_wf" value="Э70">Э70</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td height="30" width="400"><a href="/tech_documentation/metal_constructions/welded_joints#tab_g1">Смотреть таблицу Г.1 и Г.2 СП
+                    16.13330.2017</a></td>
+            </tr>
+            <tr>
+                <th scope="row">Выберите марку стали:</th>
+                <td>
+                    <div class="container p-0">
+                        <div class="row">
+
+                            <div class="col-8 col-md-3">
+                                <select name="select2" id="select2" class="select"
+                                        style="height: 35px; width: 196px; border-color: black">
+
+                                    <optgroup label="">
+                                        <option class="start">Выберите марку стали</option>
+                                        <option selected="selected" class="Э42, Э42А">----Сталь для электродов Э42 и
+                                            Э42А----
+                                        </option>
+                                        <option disabled="" class="Э42, Э42А">----Марка стали С235----</option>
+                                        <option name="big_r_un" value="С235 от 2 до 20 мм" class="Э42, Э42А">от 2 до 20
+                                            мм
+                                        </option>
+                                        <option name="big_r_un" value="С235 св. 20 до 40 мм" class="Э42, Э42А">св. 20 до
+                                            40 мм
+                                        </option>
+                                        <option name="big_r_un" value="С235 св. 40 до 100 мм" class="Э42, Э42А">св. 40
+                                            до 100 мм
+                                        </option>
+                                        <option name="big_r_un" value="С235 св. 100 мм" class="Э42, Э42А">св. 100 мм
+                                        </option>
+                                        <option disabled="" class="Э42, Э42А">----Марка стали С245----</option>
+                                        <option name="big_r_un" value="С245 от 2 до 20 мм" class="Э42, Э42А">от 2 до 20
+                                            мм
+                                        </option>
+                                        <option name="big_r_un" value="С245 св. 20 до 30 мм" class="Э42, Э42А">св. 20 до
+                                            30 мм
+                                        </option>
+                                        <option disabled class="Э42, Э42А">----Марка стали С255----</option>
+                                        <option name="big_r_un" value="С255 от 2 до 3.9 мм" class="Э42, Э42А">от 2 до
+                                            3.9 мм
+                                        </option>
+                                        <option name="big_r_un" value="С255 от 4 до 10 мм" class="Э42, Э42А">от 4 до 10
+                                            мм
+                                        </option>
+                                        <option name="big_r_un" value="С255 св. 10 до 20 мм" class="Э42, Э42А">св. 10 до
+                                            20 мм
+                                        </option>
+                                        <option name="big_r_un" value="С255 св. 20 до 40 мм" class="Э42, Э42А">св. 20 до
+                                            40 мм
+                                        </option>
+                                        <option disabled="" class="Э42, Э42А">----Марка стали С275----</option>
+                                        <option name="big_r_un" value="С275 от 2 до 10 мм" class="Э42, Э42А">от 2 до 10
+                                            мм
+                                        </option>
+                                        <option name="big_r_un" value="С275 св. 10 до 20 мм" class="Э42, Э42А">св. 10 до
+                                            20 мм
+                                        </option>
+                                        <option disabled="" class="Э42, Э42А">----Марка стали С285----</option>
+                                        <option name="big_r_un" value="С285 от 2 до 3.9 мм" class="Э42, Э42А">от 2 до
+                                            3.9 мм
+                                        </option>
+                                        <option name="big_r_un" value="С285 от 4 до 10 мм" class="Э42, Э42А">от 4 до 10
+                                            мм
+                                        </option>
+                                        <option name="big_r_un" value="С285 св. 10 до 20 мм" class="Э42, Э42А">св. 10 до
+                                            20 мм
+                                        </option>
+                                    </optgroup>
+                                    <optgroup label="">
+                                        <option selected="selected" class="Э46, Э46А">----Сталь для электродов Э46 и
+                                            Э46А----
+                                        </option>
+                                        <option disabled="" class="Э46, Э46А">----Марка стали С235----</option>
+                                        <option name="big_r_un" value="С235 от 2 до 20 мм" class="Э46, Э46А">от 2 до 20
+                                            мм
+                                        </option>
+                                        <option name="big_r_un" value="С235 св. 20 до 40 мм" class="Э46, Э46А">св. 20 до
+                                            40 мм
+                                        </option>
+                                        <option name="big_r_un" value="С235 св. 40 до 100 мм" class="Э46, Э46А">св. 40
+                                            до 100 мм
+                                        </option>
+                                        <option name="big_r_un" value="С235 св. 100 мм" class="Э46, Э46А">св. 100 мм
+                                        </option>
+                                        <option disabled="" class="Э46, Э46А">----Марка стали С245----</option>
+                                        <option name="big_r_un" value="С245 от 2 до 20 мм" class="Э46, Э46А">от 2 до 20
+                                            мм
+                                        </option>
+                                        <option name="big_r_un" value="С245 св. 20 до 30 мм" class="Э46, Э46А">св. 20 до
+                                            30 мм
+                                        </option>
+                                        <option disabled class="Э46, Э46А">----Марка стали С255----</option>
+                                        <option name="big_r_un" value="С255 от 2 до 3.9 мм" class="Э46, Э46А">от 2 до
+                                            3.9 мм
+                                        </option>
+                                        <option name="big_r_un" value="С255 от 4 до 10 мм" class="Э46, Э46А">от 4 до 10
+                                            мм
+                                        </option>
+                                        <option name="big_r_un" value="С255 св. 10 до 20 мм" class="Э46, Э46А">св. 10 до
+                                            20 мм
+                                        </option>
+                                        <option name="big_r_un" value="С255 св. 20 до 40 мм" class="Э46, Э46А">св. 20 до
+                                            40 мм
+                                        </option>
+                                        <option disabled="" class="Э46, Э46А">----Марка стали С275----</option>
+                                        <option name="big_r_un" value="С275 от 2 до 10 мм" class="Э46, Э46А">от 2 до 10
+                                            мм
+                                        </option>
+                                        <option name="big_r_un" value="С275 св. 10 до 20 мм" class="Э46, Э46А">св. 10 до
+                                            20 мм
+                                        </option>
+                                        <option disabled="" class="Э46, Э46А">----Марка стали С285----</option>
+                                        <option name="big_r_un" value="С285 от 2 до 3.9 мм" class="Э46, Э46А">от 2 до
+                                            3.9 мм
+                                        </option>
+                                        <option name="big_r_un" value="С285 от 4 до 10 мм" class="Э46, Э46А">от 4 до 10
+                                            мм
+                                        </option>
+                                        <option name="big_r_un" value="С285 св. 10 до 20 мм" class="Э46, Э46А">св. 10 до
+                                            20 мм
+                                        </option>
+                                    </optgroup>
+                                    <optgroup label="">
+                                        <option selected="selected" class="Э50, Э50А" style="danger">----Сталь для
+                                            электродов Э50 и Э50А----
+                                        </option>
+                                        <option disabled="" class="Э50, Э50А">----Марка стали С345----</option>
+                                        <option name="big_r_un" value="С345 от 2 до 10 мм" class="Э50, Э50А">от 2 до 10
+                                            мм
+                                        </option>
+                                        <option name="big_r_un" value="С345 св. 10 до 20 мм" class="Э50, Э50А">св. 10 до
+                                            20 мм
+                                        </option>
+                                        <option name="big_r_un" value="С345 св. 20 до 40 мм" class="Э50, Э50А">св. 20 до
+                                            40 мм
+                                        </option>
+                                        <option name="big_r_un" value="С345 св. 40 до 60 мм" class="Э50, Э50А">св. 40 до
+                                            60 мм
+                                        </option>
+                                        <option name="big_r_un" value="С345 св. 60 до 80 мм" class="Э50, Э50А">св. 60 до
+                                            80 мм
+                                        </option>
+                                        <option name="big_r_un" value="С345 св. 80 до 160 мм" class="Э50, Э50А">св. 80
+                                            до 160 мм
+                                        </option>
+                                        <option disabled="" class="Э50, Э50А">----Марка стали С345К (только для
+                                            Э50А)----
+                                        </option>
+                                        <option name="big_r_un" value="С345К (только для Э50А) от 4 до 10 мм"
+                                                class="Э50, Э50А">от 4 до 10 мм
+                                        </option>
+                                        <option disabled="" class="Э50, Э50А">----Марка стали С375----</option>
+                                        <option name="big_r_un" value="С375 от 2 до 10 мм" class="Э50, Э50А">от 2 до 10
+                                            мм
+                                        </option>
+                                        <option name="big_r_un" value="С375 св. 10 до 20 мм" class="Э50, Э50А">св. 10 до
+                                            20 мм
+                                        </option>
+                                        <option name="big_r_un" value="С375 св. 20 до 40 мм" class="Э50, Э50А">св. 20 до
+                                            40 мм
+                                        </option>
+                                        <option disabled="" class="Э50, Э50А">----Марка стали С390----</option>
+                                        <option name="big_r_un" value="С390 от 4 до 50 мм" class="Э50, Э50А">от 4 до 50
+                                            мм
+                                        </option>
+                                        <option disabled="" class="Э50, Э50А">----Марка стали С390К----</option>
+                                        <option name="big_r_un" value="С390К от 4 до 30 мм" class="Э50, Э50А">от 4 до 30
+                                            мм
+                                        </option>
+                                        <option disabled="" class="Э50, Э50А">----Марка стали С440----</option>
+                                        <option name="big_r_un" value="С440 от 4 до 30 мм" class="Э50, Э50А">от 4 до 30
+                                            мм
+                                        </option>
+                                        <option name="big_r_un" value="С440 св. 30 до 50 мм" class="Э50, Э50А">св. 30 до
+                                            50 мм
+                                        </option>
+                                    </optgroup>
+                                    <optgroup label="">
+                                        <option selected="selected" class="Э60" style="danger">----Сталь для электродов
+                                            Э60----
+                                        </option>
+                                        <option disabled="" class="Э60">----Марка стали С590----</option>
+                                        <option name="big_r_un" value="С590 от 4 до 10 мм" class="Э60">от 4 до 10 мм
+                                        </option>
+                                        <option disabled="" class="Э60">----Марка стали С590К----</option>
+                                        <option name="big_r_un" value="С590К от 16 до 40 мм" class="Э60">от 16 до 40
+                                            мм
+                                        </option>
+                                    </optgroup>
+                                    <optgroup label="">
+                                        <option selected="selected" class="Э70" style="danger">----Сталь для электродов
+                                            Э70----
+                                        </option>
+                                        <option disabled="" class="Э70">----Марка стали С590----</option>
+                                        <option name="big_r_un" value="С590 от 4 до 10 мм" class="Э70">От 10 до 36 мм
+                                        </option>
+                                        <option disabled="" class="Э70">----Марка стали С590К----</option>
+                                        <option name="big_r_un" value="С590К от 16 до 40 мм" class="Э70">От 16 до 40
+                                            мм
+                                        </option>
+                                    </optgroup>
+                                </select>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </td>
+                <td><a href="/tech_documentation/metal_constructions/welded_joints#tab_v3">Смотреть таблицу B.3 СП 16.13330.2017</a></td>
+
+            </tr>
+            <tr>
+                <th scope="row">Коэфициент \(B_f\) :</th>
+                <td><input name='big_b_f' type='number' step='any' min="0.7" value=0.7
+                           style="height: 33px; width: 196px; border-color: black"></td>
+                <td><a href="/tech_documentation/metal_constructions/welded_joints#tab_39">Смотреть таблицу №39 СП 16.13330.2017</a></td>
+            </tr>
+            <tr>
+                <th scope="row">Коэфициент \(B_z\) :</th>
+                <td><input name='big_b_z' type='number' step='any' min="1" value=1
+                           style="height: 33px; width: 196px; border-color: black"></td>
+                <td><a href="/tech_documentation/metal_constructions/welded_joints#tab_39">Смотреть таблицу №39 СП 16.13330.2017</a></td>
+            </tr>
+
+            <tr>
+                <th scope="row">Коэфициент условий работы \(\gamma_c\) :</th>
+                <td><input name='gamma_c' type='number' step='any' min="0.75" value=1
+                           style="height: 33px; width: 196px; border-color: black"></td>
+                <td><a href="/tech_documentation/metal_constructions/welded_joints#tab_1">Смотреть таблицу №1 СП 16.13330.2017</a></td>
+            </tr>
+
+            <tr>
+                <th scope="row">Катет шва \(k_f\) (см) :</th>
+                <td><input name='k_f' type='number' step='any' min="0.1" value=1
+                           style="height: 33px; width: 196px; border-color: black"></td>
+                <td><a href="/tech_documentation/metal_constructions/welded_joints#tab_38">Смотреть таблицу №38 СП 16.13330.2017</a></td>
+            </tr>
+
+             <tr>
+                <th scope="row" col="2">Длина шва \(l_1\) (см) :</th>
+                <td><input name='l_1' type='number' step='any' min="1" value=30 style="height: 33px; width: 196px; border-color: black"></td>
+                <td></td>
+             </tr>
+             <tr>
+                <th scope="row" col="2">Длина шва \(l_2\) (см) :</th>
+                <td><input name='l_2' type='number' step='any' min="1" value=20 style="height: 33px; width: 196px; border-color: black"></td>
+                 <td></td>
+            </tr>
+
+
+            </thead>
+        </table>
+    </div>
+    <div class="container">
+        <button type="SUBMIT" class="btn btn-primary">Рассчитать!</button>
+    </div>
+
+
+    <script>
+ $(function(){
+ $("form").trigger("reset");
+ $("#select2").chainedTo("#select1");
+ $("#select1").change(function(){
+ $("#select2").selectpicker("refresh");});});
+
+
+
+    </script>
+</form>
+
+
+{% endblock %}

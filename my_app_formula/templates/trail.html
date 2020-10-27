@@ -1,0 +1,266 @@
+<html lang="en">
+
+<meta charset="UTF-8">
+<!-- Подключаем Bootstrap CSS -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    TeX: {extensions: ["mhchem.js"]},
+    tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+    processEscapes: true
+    }
+});
+
+    </script>
+    <script type="text/javascript" async
+            src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.min.css">
+<!--<link rel="stylesheet"-->
+<!--      href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css"/>-->
+<link rel="stylesheet" type="text/css" href="/static/css/nav-bar.css">
+
+<title>Hello</title>
+
+<title>Title</title>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+    <a class="navbar-brand" href="#">Hidden brand</a>
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+   <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown link
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <li><a class="dropdown-item" href="#">Action</a></li>
+          <li><a class="dropdown-item" href="#">Another action</a></li>
+          <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Submenu</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Submenu action</a></li>
+              <li><a class="dropdown-item" href="#">Another submenu action</a></li>
+
+
+              <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Subsubmenu</a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Subsubmenu action</a></li>
+                  <li><a class="dropdown-item" href="#">Another subsubmenu action</a></li>
+                </ul>
+              </li>
+              <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Second subsubmenu</a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Subsubmenu action</a></li>
+                  <li><a class="dropdown-item" href="#">Another subsubmenu action</a></li>
+                </ul>
+              </li>
+
+
+
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+</header>
+<body>
+
+<p>Например формула написанная через слеш \(B_f + T_{rd}\)</p>
+<p>Или формула написанная через доллар $$B_f + T_{rd}$$</p>
+
+<div class="container">
+    <div class="row">
+        <div class="col-8 col-md-4">
+            <form>
+
+                <select id="select1" class="custom-select">
+                    <optgroup label="">
+                        <option value="start">---Выберите марку электродов---</option>
+                        <option name="big_r_wf" value="180">Э42, Э42А</option>
+                        <option name="big_r_wf" value="200">Э46, Э46А</option>
+                        <option name="big_r_wf" value="215">Э50, Э50А</option>
+                        <option name="big_r_wf" value="240">Э60</option>
+                        <option name="big_r_wf" value="280">Э70</option>
+                    </optgroup>
+                </select>
+
+                <select id="select2" class="custom-select">
+                    <optgroup label="">
+                        <option   class="start">----Выберите марку стали----</option>
+                        <option  selected="selected" class="180" >----Сталь для электродов Э42 и
+                            Э42А----</option>
+                        <option disabled="" class="180">----Марка стали С235----</option>
+                        <option name="big_r_un" value="360" class="180">От 2 до 20 мм</option>
+                        <option name="big_r_un" value="360" class="180">Св. 20 до 40 мм</option>
+                        <option name="big_r_un" value="360" class="180">Св. 40 до 100 мм</option>
+                        <option name="big_r_un" value="360" class="180">Св. 100 мм</option>
+                        <option disabled="" class="180">----Марка стали С245----</option>
+                        <option name="big_r_un" value="370" class="180">От 2 до 20 мм</option>
+                        <option name="big_r_un" value="370" class="180">Св. 20 до 30 мм</option>
+                        <option disabled class="180">----Марка стали С255----</option>
+                        <option name="big_r_un" value="380" class="180">От 2 до 3.9 мм</option>
+                        <option name="big_r_un" value="380" class="180">От 4 до 10 мм</option>
+                        <option name="big_r_un" value="370" class="180">Св. 10 до 20 мм</option>
+                        <option name="big_r_un" value="370" class="180">Св. 20 до 40 мм</option>
+                        <option disabled="" class="180">----Марка стали С275----</option>
+                        <option name="big_r_un" value="380" class="180">От 2 до 10 мм</option>
+                        <option name="big_r_un" value="370" class="180">Св. 10 до 20 мм</option>
+                        <option disabled="" class="180">----Марка стали С285----</option>
+                        <option name="big_r_un" value="390" class="180">От 2 до 3.9 мм</option>
+                        <option name="big_r_un" value="390" class="180">От 4 до 10 мм</option>
+                        <option name="big_r_un" value="380" class="180">Св. 10 до 20 мм</option>
+                    </optgroup>
+                    <optgroup label="">
+                        <option selected="selected" class="200">----Сталь для электродов Э46 и
+                            Э46А----
+                        </option>
+                        <option disabled="" class="200">----Марка стали С235----</option>
+                        <option name="big_r_un" value="360" class="200">От 2 до 20 мм</option>
+                        <option name="big_r_un" value="360" class="200">Св. 20 до 40 мм</option>
+                        <option name="big_r_un" value="360" class="200">Св. 40 до 100 мм</option>
+                        <option name="big_r_un" value="360" class="200">Св. 100 мм</option>
+                        <option disabled="" class="200">----Марка стали С245----</option>
+                        <option name="big_r_un" value="370" class="200">От 2 до 20 мм</option>
+                        <option name="big_r_un" value="370" class="200">Св. 20 до 30 мм</option>
+                        <option disabled class="200">----Марка стали С255----</option>
+                        <option name="big_r_un" value="380" class="200">От 2 до 3.9 мм</option>
+                        <option name="big_r_un" value="380" class="200">От 4 до 10 мм</option>
+                        <option name="big_r_un" value="370" class="200">Св. 10 до 20 мм</option>
+                        <option name="big_r_un" value="370" class="200">Св. 20 до 40 мм</option>
+                        <option disabled="" class="200">----Марка стали С275----</option>
+                        <option name="big_r_un" value="380" class="200">От 2 до 10 мм</option>
+                        <option name="big_r_un" value="370" class="200">Св. 10 до 20 мм</option>
+                        <option disabled="" class="200">----Марка стали С285----</option>
+                        <option name="big_r_un" value="390" class="200">От 2 до 3.9 мм</option>
+                        <option name="big_r_un" value="390" class="200">От 4 до 10 мм</option>
+                        <option name="big_r_un" value="380" class="200">Св. 10 до 20 мм</option>
+                    </optgroup>
+                    <optgroup label="">
+                        <option selected="selected" class="215" style="danger">----Сталь для электродов Э50 и Э50А---- </option>
+                        <option disabled="" class="215">----Марка стали С345----</option>
+                        <option name="big_r_un" value="490" class="215">От 2 до 10 мм</option>
+                        <option name="big_r_un" value="470" class="215">Св. 10 до 20 мм</option>
+                        <option name="big_r_un" value="460" class="215">Св. 20 до 40 мм</option>
+                        <option name="big_r_un" value="450" class="215">Св. 40 до 60 мм</option>
+                        <option name="big_r_un" value="440" class="215">Св. 60 до 80 мм</option>
+                        <option name="big_r_un" value="430" class="215">Св. 80 до 160 мм</option>
+                        <option disabled="" class="215">----Марка стали С345К----</option>
+                        <option name="big_r_un" value="470" class="215">От 4 до 10 мм</option>
+                        <option disabled="" class="215">----Марка стали С375----</option>
+                        <option name="big_r_un" value="510" class="215">От 2 до 10 мм</option>
+                        <option name="big_r_un" value="490" class="215">Св. 10 до 20 мм</option>
+                        <option name="big_r_un" value="480" class="215">Св. 20 до 40 мм</option>
+                        <option disabled="" class="215">----Марка стали С390----</option>
+                        <option name="big_r_un" value="540" class="215">От 4 до 50 мм</option>
+                        <option disabled="" class="215">----Марка стали С390К----</option>
+                        <option name="big_r_un" value="540" class="215">От 4 до 30 мм</option>
+                        <option disabled="" class="215">----Марка стали С440----</option>
+                        <option name="big_r_un" value="590" class="215">От 4 до 30 мм</option>
+                        <option name="big_r_un" value="570" class="215">Св. 30 до 50 мм</option>
+                    </optgroup>
+                    <optgroup label="">
+                        <option selected="selected" class="240" style="danger">----Сталь для электродов Э60---- </option>
+                        <option disabled="" class="240">----Марка стали С590----</option>
+                        <option name="big_r_un" value="635" class="240">От 4 до 10 мм</option>
+                        <option disabled="" class="240">----Марка стали С590К----</option>
+                        <option name="big_r_un" value="635" class="240">От 16 до 40 мм</option>
+                    </optgroup>
+                    <optgroup label="">
+                        <option selected="selected" class="280" style="danger">----Сталь для электродов Э70---- </option>
+                        <option disabled="" class="280">----Марка стали С590----</option>
+                        <option name="big_r_un" value="635" class="280">От 10 до 36 мм</option>
+                        <option disabled="" class="280">----Марка стали С590К----</option>
+                        <option name="big_r_un" value="635" class="280">От 16 до 40 мм</option>
+                    </optgroup>
+                </select>
+
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Подключаем jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Подключаем плагин Popper -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<!-- Подключаем Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-chained/1.0.1/jquery.chained.min.js"
+        integrity="sha512-rcWQG55udn0NOSHKgu3DO5jb34nLcwC+iL1Qq6sq04Sj7uW27vmYENyvWm8I9oqtLoAE01KzcUO6THujRpi/Kg=="
+        crossorigin="anonymous"></script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    TeX: {extensions: ["mhchem.js"]},
+    tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+    processEscapes: true
+    }
+});
+
+    </script>
+    <script type="text/javascript" async
+            src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+
+<script>
+ $(function(){
+ $("form").trigger("reset");
+ $("#select2").chainedTo("#select1");
+ $("#select1").change(function(){
+ $("#select2").selectpicker("refresh");});});
+
+</script>
+
+<script>
+    $('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
+  if (!$(this).next().hasClass('show')) {
+    $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
+  }
+  var $subMenu = $(this).next(".dropdown-menu");
+  $subMenu.toggleClass('show');
+
+
+  $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function(e) {
+    $('.dropdown-submenu .show').removeClass("show");
+  });
+
+
+  return false;
+});
+</script>
+</body>
+</html>
